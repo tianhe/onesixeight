@@ -27,10 +27,13 @@
     UIViewController *viewController3 = [[OSECheckViewController alloc] init];
     UIViewController *viewController4 = [[OSEImproveViewController alloc] init];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController2];
+    UINavigationController *navController1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
+    navController1.navigationBarHidden = YES;
+    UINavigationController *navController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
+    navController2.navigationBarHidden = YES;
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, navController, viewController3, viewController4, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navController1, navController2, viewController3, viewController4, nil];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
@@ -101,6 +104,16 @@
 
 - (NSString *)applicationDocumentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
+- (NSArray *)getAllGoals {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Goal" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError *error;
+    
+    NSArray *fetchedGoals = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    return fetchedGoals;
 }
 
 @end

@@ -19,5 +19,6 @@
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property NSDateFormatter *dateFormatter;
+@property NSArray *fetchedGoals;
 
 @end

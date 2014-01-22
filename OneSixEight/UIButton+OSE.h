@@ -11,5 +11,6 @@
 @interface UIButton (OSE)
 
 + (UIButton *)standardButton;
++ (UIButton *)standardHalfButton;
 
 @end

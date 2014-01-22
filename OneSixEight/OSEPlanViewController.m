@@ -2,17 +2,16 @@
 //  OSEPlanViewController.m
 //  OneSixEight
 //
-//  Created by Tian Y He on 1/18/14.
+//  Created by Tian Y He on 1/20/14.
 //  Copyright (c) 2014 CL. All rights reserved.
-// 
+//
 
 #import "OSEPlanViewController.h"
+#import "OSESaveGoalViewController.h"
+#import "OSEPlanTableViewCell.h"
 
 @interface OSEPlanViewController ()
 
-@property UITextField *startDateField;
-@property UITextField *targetHoursField;
-@property UITextField *nameField;
 @end
 
 @implementation OSEPlanViewController
@@ -32,39 +31,34 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    UILabel *nameLabel = [UILabel standardLabel];
-    nameLabel.text = @"Name";
-    [nameLabel setOriginAtX:20 andY:40];
-    [self.view addSubview:nameLabel];
+    UIButton *addButton = [UIButton standardButton];
+    [addButton setTitle:@"Add Goal" forState:UIControlStateNormal];
+    [addButton addTarget:self action:@selector(createNewGoal:) forControlEvents:UIControlEventTouchUpInside];
+    [addButton setOriginAtX:20 andY:40];
+    [self.view addSubview:addButton];
     
-    self.nameField = [UITextField standardTextField];
-    [self.nameField setOriginAtX:140 andY:40];
-    [self.view addSubview:self.nameField];
+    float height = [UIScreen mainScreen].bounds.size.height - 60 - 60 - 100;
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,100,[UIScreen mainScreen].bounds.size.width,height)];
+    [self.tableView registerClass:[OSEPlanTableViewCell class] forCellReuseIdentifier:@"planGoalCellIdentifier"];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
     
-    UILabel *startDateLabel = [UILabel standardLabel];
-    startDateLabel.text = @"Start Date";
-    [startDateLabel setOriginAtX:20 andY:100];
-    [self.view addSubview:startDateLabel];
+    self.totalLabel = [UILabel standardFullLabel];
+    float y = [UIScreen mainScreen].bounds.size.height - 40 - 60;
+    [self.totalLabel setOriginAtX:20 andY:y];
+    [self.view addSubview:self.totalLabel];
+}
 
-    self.startDateField = [UITextField standardTextField];
-    [self.startDateField setOriginAtX:140 andY:100];
-    [self.view addSubview:self.startDateField];
+- (void)viewWillAppear:(BOOL)animated
+{
+    OSEAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    self.fetchedGoals = [appDelegate getAllGoals];
     
-    UILabel *targetHoursLabel = [UILabel standardLabel];
-    targetHoursLabel.text = @"Target Hours";
-    [targetHoursLabel setOriginAtX:20 andY:160];
-    [self.view addSubview:targetHoursLabel];
-
-    self.targetHoursField = [UITextField standardTextField];
-    [self.targetHoursField setOriginAtX:140 andY:160];
-    [self.view addSubview:self.targetHoursField];
-    
-    UIButton *button = [UIButton standardButton];
-    [button setTitle:@"Save" forState:UIControlStateNormal];
-    [button setOriginAtX:20 andY:220];
-    [button addTarget:self action:@selector(addGoal:) forControlEvents:UIControlEventTouchUpInside];
-
-    [self.view addSubview:button];
+    NSNumber *sum = [self.fetchedGoals valueForKeyPath:@"@sum.targetHours"];
+    NSString *totalHours = [NSString stringWithFormat:@"Planned Hours:   %d of 168 (%d%%)", [sum intValue], [sum intValue]*100/168];
+    self.totalLabel.text = totalHours;    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,29 +67,50 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)addGoal:(id)sender
+#pragma mark - responders
+- (void)createNewGoal:(id)target
 {
-    Goal *newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"Goal"
-                                                   inManagedObjectContext:self.managedObjectContext];
+    OSESaveGoalViewController *goalController = [[OSESaveGoalViewController alloc] init];
+    [self presentViewController:goalController animated:YES completion:nil];
+}
+
+#pragma mark - table methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.fetchedGoals count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"planGoalCellIdentifier";
+    OSEPlanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    newEntry.startDate = [self.dateFormatter dateFromString:self.startDateField.text];
-    newEntry.endDate = [newEntry.startDate dateByAddingTimeInterval:7*24*60*60];
-    newEntry.targetHours = [NSDecimalNumber decimalNumberWithString:self.targetHoursField.text];
-    newEntry.name = self.nameField.text;
-
-    NSLog(@"Date for locale %@: %@",
-          [[self.dateFormatter locale] localeIdentifier], [self.dateFormatter stringFromDate:newEntry.startDate]);
-
-    NSError *error;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    if(!cell){
+        cell = [[OSEPlanTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+    
+    Goal *goal = [self.fetchedGoals objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", goal.name];
+    
+    float targetHours = [goal.targetHours floatValue];
+    NSString *string= [NSString stringWithFormat:@"%0.0f", targetHours];
+    
+    cell.hoursInfoLabel.text = string;
+    cell.hoursInfoLabel.textAlignment = NSTextAlignmentRight;
+    return cell;
+}
 
-    self.startDateField.text = @"";
-    self.targetHoursField.text = @"";
-    self.nameField.text = @"";
-
-    [self.view endEditing:YES];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Goal *goal = [self.fetchedGoals objectAtIndex:indexPath.row];
+    
+    OSESaveGoalViewController *goalController = [[OSESaveGoalViewController alloc] initWithGoal:goal];
+    [self presentViewController:goalController animated:YES completion:nil];
 }
 
 @end

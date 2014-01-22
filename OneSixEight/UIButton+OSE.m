@@ -21,4 +21,15 @@
     return oseButton;
 }
 
+
++ (UIButton *)standardHalfButton
+{
+    UIButton *oseButton = [[UIButton alloc] init];
+    [oseButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [oseButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [oseButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    oseButton.backgroundColor = [UIColor whiteColor];
+    oseButton.frame = CGRectMake(0, 0, 120, 40);
+    return oseButton;
+}
 @end

@@ -1,5 +1,5 @@
 //
-//  OSECheckViewController.h
+//  OSEPlanViewController.h
 //  OneSixEight
 //
 //  Created by Tian Y He on 1/18/14.
@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "OSEBaseViewController.h"
 
-@interface OSECheckViewController : OSEBaseViewController <UITableViewDataSource, UITableViewDelegate>
+@interface OSESaveGoalViewController : OSEBaseViewController
 
-@property UITableView *tableView;
+- (id)initWithGoal:(Goal *)goal;
+
+@property Goal *goal;
 
 @end

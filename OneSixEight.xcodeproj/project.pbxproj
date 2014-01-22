@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A4AE640188CE71300852B46 /* OSEPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */; };
+		2A4AE643188CEC2B00852B46 /* OSEBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AE642188CEC2B00852B46 /* OSEBaseTableViewController.m */; };
+		2A4AE646188CEE2000852B46 /* OSEPlanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AE645188CEE2000852B46 /* OSEPlanTableViewCell.m */; };
 		2A9B3FC7188B3B9C00752482 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9B3FC6188B3B9C00752482 /* Foundation.framework */; };
 		2A9B3FC9188B3B9C00752482 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9B3FC8188B3B9C00752482 /* CoreGraphics.framework */; };
 		2A9B3FCB188B3B9C00752482 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9B3FCA188B3B9C00752482 /* UIKit.framework */; };
@@ -19,7 +22,7 @@
 		2A9B3FE2188B3B9C00752482 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9B3FCA188B3B9C00752482 /* UIKit.framework */; };
 		2A9B3FEA188B3B9C00752482 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A9B3FE8188B3B9C00752482 /* InfoPlist.strings */; };
 		2A9B3FEC188B3B9C00752482 /* OneSixEightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B3FEB188B3B9C00752482 /* OneSixEightTests.m */; };
-		2A9B3FF7188B3DD400752482 /* OSEPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B3FF6188B3DD400752482 /* OSEPlanViewController.m */; };
+		2A9B3FF7188B3DD400752482 /* OSESaveGoalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B3FF6188B3DD400752482 /* OSESaveGoalViewController.m */; };
 		2A9B3FFA188B3DE900752482 /* OSEDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B3FF9188B3DE900752482 /* OSEDoViewController.m */; };
 		2A9B3FFD188B3DFB00752482 /* OSECheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B3FFC188B3DFB00752482 /* OSECheckViewController.m */; };
 		2A9B4000188B3E0C00752482 /* OSEImproveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B3FFF188B3E0C00752482 /* OSEImproveViewController.m */; };
@@ -32,6 +35,7 @@
 		2A9B401A188BF36600752482 /* UIView+OSE.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B4019188BF36600752482 /* UIView+OSE.m */; };
 		2A9B401D188BF3A700752482 /* UILabel+OSE.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B401C188BF3A700752482 /* UILabel+OSE.m */; };
 		2A9B4020188BF66800752482 /* UIButton+OSE.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B401F188BF66800752482 /* UIButton+OSE.m */; };
+		2A9B402A188CDF7600752482 /* OSECheckTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B4029188CDF7600752482 /* OSECheckTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A4AE63E188CE71300852B46 /* OSEPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEPlanViewController.h; sourceTree = "<group>"; };
+		2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEPlanViewController.m; sourceTree = "<group>"; };
+		2A4AE641188CEC2B00852B46 /* OSEBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEBaseTableViewController.h; sourceTree = "<group>"; };
+		2A4AE642188CEC2B00852B46 /* OSEBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEBaseTableViewController.m; sourceTree = "<group>"; };
+		2A4AE644188CEE2000852B46 /* OSEPlanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEPlanTableViewCell.h; sourceTree = "<group>"; };
+		2A4AE645188CEE2000852B46 /* OSEPlanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEPlanTableViewCell.m; sourceTree = "<group>"; };
 		2A9B3FC3188B3B9C00752482 /* OneSixEight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneSixEight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9B3FC6188B3B9C00752482 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2A9B3FC8188B3B9C00752482 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,8 +71,8 @@
 		2A9B3FE7188B3B9C00752482 /* OneSixEightTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneSixEightTests-Info.plist"; sourceTree = "<group>"; };
 		2A9B3FE9188B3B9C00752482 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2A9B3FEB188B3B9C00752482 /* OneSixEightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneSixEightTests.m; sourceTree = "<group>"; };
-		2A9B3FF5188B3DD400752482 /* OSEPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEPlanViewController.h; sourceTree = "<group>"; };
-		2A9B3FF6188B3DD400752482 /* OSEPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEPlanViewController.m; sourceTree = "<group>"; };
+		2A9B3FF5188B3DD400752482 /* OSESaveGoalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSESaveGoalViewController.h; sourceTree = "<group>"; };
+		2A9B3FF6188B3DD400752482 /* OSESaveGoalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSESaveGoalViewController.m; sourceTree = "<group>"; };
 		2A9B3FF8188B3DE900752482 /* OSEDoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEDoViewController.h; sourceTree = "<group>"; };
 		2A9B3FF9188B3DE900752482 /* OSEDoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEDoViewController.m; sourceTree = "<group>"; };
 		2A9B3FFB188B3DFB00752482 /* OSECheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSECheckViewController.h; sourceTree = "<group>"; };
@@ -85,6 +95,8 @@
 		2A9B401C188BF3A700752482 /* UILabel+OSE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+OSE.m"; sourceTree = "<group>"; };
 		2A9B401E188BF66800752482 /* UIButton+OSE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+OSE.h"; sourceTree = "<group>"; };
 		2A9B401F188BF66800752482 /* UIButton+OSE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+OSE.m"; sourceTree = "<group>"; };
+		2A9B4028188CDF7600752482 /* OSECheckTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSECheckTableViewCell.h; sourceTree = "<group>"; };
+		2A9B4029188CDF7600752482 /* OSECheckTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSECheckTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +223,12 @@
 				2A9B4019188BF36600752482 /* UIView+OSE.m */,
 				2A9B4014188BEFC100752482 /* OSEBaseViewController.h */,
 				2A9B4015188BEFC100752482 /* OSEBaseViewController.m */,
+				2A4AE641188CEC2B00852B46 /* OSEBaseTableViewController.h */,
+				2A4AE642188CEC2B00852B46 /* OSEBaseTableViewController.m */,
+				2A9B4028188CDF7600752482 /* OSECheckTableViewCell.h */,
+				2A9B4029188CDF7600752482 /* OSECheckTableViewCell.m */,
+				2A4AE644188CEE2000852B46 /* OSEPlanTableViewCell.h */,
+				2A4AE645188CEE2000852B46 /* OSEPlanTableViewCell.m */,
 			);
 			name = "OSE Styleguide";
 			sourceTree = "<group>";
@@ -218,8 +236,10 @@
 		2A9B4017188BF2C200752482 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2A9B3FF5188B3DD400752482 /* OSEPlanViewController.h */,
-				2A9B3FF6188B3DD400752482 /* OSEPlanViewController.m */,
+				2A9B3FF5188B3DD400752482 /* OSESaveGoalViewController.h */,
+				2A9B3FF6188B3DD400752482 /* OSESaveGoalViewController.m */,
+				2A4AE63E188CE71300852B46 /* OSEPlanViewController.h */,
+				2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */,
 				2A9B3FF8188B3DE900752482 /* OSEDoViewController.h */,
 				2A9B3FF9188B3DE900752482 /* OSEDoViewController.m */,
 				2A9B3FFB188B3DFB00752482 /* OSECheckViewController.h */,
@@ -326,9 +346,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A9B3FF7188B3DD400752482 /* OSEPlanViewController.m in Sources */,
+				2A4AE646188CEE2000852B46 /* OSEPlanTableViewCell.m in Sources */,
+				2A4AE643188CEC2B00852B46 /* OSEBaseTableViewController.m in Sources */,
+				2A9B3FF7188B3DD400752482 /* OSESaveGoalViewController.m in Sources */,
 				2A9B4000188B3E0C00752482 /* OSEImproveViewController.m in Sources */,
 				2A9B3FFA188B3DE900752482 /* OSEDoViewController.m in Sources */,
+				2A4AE640188CE71300852B46 /* OSEPlanViewController.m in Sources */,
 				2A9B3FD7188B3B9C00752482 /* OSEAppDelegate.m in Sources */,
 				2A9B400C188BE0AC00752482 /* Goal.m in Sources */,
 				2A9B401D188BF3A700752482 /* UILabel+OSE.m in Sources */,
@@ -336,6 +359,7 @@
 				2A9B401A188BF36600752482 /* UIView+OSE.m in Sources */,
 				2A9B400F188BE5FB00752482 /* NSDateFormatter+OSE.m in Sources */,
 				2A9B4009188BDBF300752482 /* GoalList.xcdatamodeld in Sources */,
+				2A9B402A188CDF7600752482 /* OSECheckTableViewCell.m in Sources */,
 				2A9B3FFD188B3DFB00752482 /* OSECheckViewController.m in Sources */,
 				2A9B4020188BF66800752482 /* UIButton+OSE.m in Sources */,
 				2A9B3FD3188B3B9C00752482 /* main.m in Sources */,
@@ -542,6 +566,7 @@
 				2A9B3FF1188B3B9C00752482 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2A9B3FF2188B3B9C00752482 /* Build configuration list for PBXNativeTarget "OneSixEightTests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +575,7 @@
 				2A9B3FF4188B3B9C00752482 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

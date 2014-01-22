@@ -1,5 +1,5 @@
 //
-//  UILabel+OSE.h
+//  OSECheckViewCell.h
 //  OneSixEight
 //
 //  Created by Tian Y He on 1/19/14.
@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UILabel (OSE)
+@interface OSECheckTableViewCell : UITableViewCell
 
-+ (UILabel *)standardLabel;
-+ (UILabel *)standardFullLabel;
+@property UILabel *hoursInfoLabel;
 
 @end
