@@ -78,7 +78,7 @@
 
     UIButton *quitButton = [UIButton standardHalfButton];
     [quitButton setTitle:@"Quit" forState:UIControlStateNormal];
-    [quitButton setOriginAtX:200 andY:220];
+    [quitButton setOriginAtX:180 andY:220];
     [quitButton addTarget:self action:@selector(quit:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:quitButton];
 }

@@ -14,7 +14,8 @@
 {
     UILabel *oseLabel = [[UILabel alloc] init];
     oseLabel.frame = CGRectMake(0, 0, 100, 40);
-    oseLabel.textColor = [UIColor whiteColor];
+    oseLabel.textColor = [UIColor lightGrayColor];
+    
     return oseLabel;
 }
 
@@ -23,8 +24,8 @@
     UILabel *oseLabel = [[UILabel alloc] init];
     int width = [UIScreen mainScreen].bounds.size.width;
     oseLabel.frame = CGRectMake(0, 0, width-40, 40);
-    oseLabel.textColor = [UIColor blackColor];
-    oseLabel.backgroundColor = [UIColor whiteColor];
+    oseLabel.textColor = [UIColor lightGrayColor];
+
     return oseLabel;
 }
 

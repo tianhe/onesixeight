@@ -236,8 +236,6 @@
 		2A9B4017188BF2C200752482 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2A9B3FF5188B3DD400752482 /* OSESaveGoalViewController.h */,
-				2A9B3FF6188B3DD400752482 /* OSESaveGoalViewController.m */,
 				2A4AE63E188CE71300852B46 /* OSEPlanViewController.h */,
 				2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */,
 				2A9B3FF8188B3DE900752482 /* OSEDoViewController.h */,
@@ -246,6 +244,8 @@
 				2A9B3FFC188B3DFB00752482 /* OSECheckViewController.m */,
 				2A9B3FFE188B3E0C00752482 /* OSEImproveViewController.h */,
 				2A9B3FFF188B3E0C00752482 /* OSEImproveViewController.m */,
+				2A9B3FF5188B3DD400752482 /* OSESaveGoalViewController.h */,
+				2A9B3FF6188B3DD400752482 /* OSESaveGoalViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
