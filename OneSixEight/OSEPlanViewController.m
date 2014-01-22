@@ -31,23 +31,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    UIButton *addButton = [UIButton standardButton];
-    [addButton setTitle:@"Add Goal" forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(createNewGoal:) forControlEvents:UIControlEventTouchUpInside];
-    [addButton setOriginAtX:20 andY:40];
-    [self.view addSubview:addButton];
-    
     float height = [UIScreen mainScreen].bounds.size.height - 60 - 60 - 100;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,100,[UIScreen mainScreen].bounds.size.width,height)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,40,[UIScreen mainScreen].bounds.size.width,height)];
     [self.tableView registerClass:[OSEPlanTableViewCell class] forCellReuseIdentifier:@"planGoalCellIdentifier"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
     self.totalLabel = [UILabel standardFullLabel];
-    float y = [UIScreen mainScreen].bounds.size.height - 40 - 60;
+    float y = height + 40 + 20;
     [self.totalLabel setOriginAtX:20 andY:y];
     [self.view addSubview:self.totalLabel];
+
+    UIButton *addButton = [UIButton standardButton];
+    [addButton setTitle:@"New Goal" forState:UIControlStateNormal];
+    [addButton addTarget:self action:@selector(createNewGoal:) forControlEvents:UIControlEventTouchUpInside];
+    y = [UIScreen mainScreen].bounds.size.height - 40 - 60;
+    [addButton setOriginAtX:20 andY:y];
+    [self.view addSubview:addButton];    
 }
 
 - (void)viewWillAppear:(BOOL)animated
