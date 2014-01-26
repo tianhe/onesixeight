@@ -53,6 +53,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     OSEAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
     self.fetchedGoals = [appDelegate getAllGoals];
     
@@ -99,10 +101,9 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@", goal.name];
     
     float targetHours = [goal.targetHours floatValue];
-    NSString *string= [NSString stringWithFormat:@"%0.0f", targetHours];
-    
+    NSString *string = [NSString stringWithFormat:@"%0.0f", targetHours];
     cell.hoursInfoLabel.text = string;
-    cell.hoursInfoLabel.textAlignment = NSTextAlignmentRight;
+    
     return cell;
 }
 

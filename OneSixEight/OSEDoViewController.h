@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 CL. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "OSEBaseViewController.h"
 
-@interface OSEDoViewController : OSEBaseViewController
+@interface OSEDoViewController : OSEBaseViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property UITableView *tableView;
 
 @end

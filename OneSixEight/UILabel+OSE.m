@@ -25,7 +25,20 @@
     int width = [UIScreen mainScreen].bounds.size.width;
     oseLabel.frame = CGRectMake(0, 0, width-40, 40);
     oseLabel.textColor = [UIColor lightGrayColor];
+    oseLabel.textAlignment = NSTextAlignmentCenter;
+    
+    return oseLabel;
+}
 
++ (UILabel *)bigLabel
+{
+    UILabel *oseLabel = [[UILabel alloc] init];
+    int width = [UIScreen mainScreen].bounds.size.width;
+    oseLabel.frame = CGRectMake(0, 0, width-40, 80);
+    oseLabel.textColor = [UIColor lightGrayColor];
+    oseLabel.textAlignment = NSTextAlignmentCenter;
+    oseLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:60];
+    
     return oseLabel;
 }
 

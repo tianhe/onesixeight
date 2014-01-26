@@ -34,6 +34,7 @@
     self.fetchedGoals = [appDelegate getAllGoals];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame];
+    [self.tableView setOriginAtX:0 andY:40];
     [self.tableView registerClass:[OSECheckTableViewCell class] forCellReuseIdentifier:@"checkGoalCellIdentifier"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -44,6 +45,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.tableView reloadData];
 }
 
@@ -78,7 +80,7 @@
     
     float loggedHours = [goal.loggedHours floatValue];
     float targetHours = [goal.targetHours floatValue];
-    NSString *string= [NSString stringWithFormat:@"%0.0f/%0.0f (%0.0f%%)", loggedHours, targetHours, loggedHours/targetHours*100 ];
+    NSString *string = [NSString stringWithFormat:@"%0.0f/%0.0f (%0.0f%%)", loggedHours, targetHours, loggedHours/targetHours*100 ];
     
     cell.hoursInfoLabel.text = string;
 

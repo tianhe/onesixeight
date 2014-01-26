@@ -31,10 +31,22 @@
     [oseButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [oseButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [oseButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    
+
     [oseButton.layer setBorderColor:[[UIColor blueColor] CGColor]];
     [oseButton.layer setBorderWidth:1];
     oseButton.backgroundColor = [UIColor clearColor];
+    oseButton.frame = CGRectMake(0, 0, 120, 40);
+    return oseButton;
+}
+
++ (UIButton *)solidHalfButton
+{
+    UIButton *oseButton = [[UIButton alloc] init];
+    [oseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [oseButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [oseButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    
+    oseButton.backgroundColor = [UIColor grayColor];
     oseButton.frame = CGRectMake(0, 0, 120, 40);
     return oseButton;
 }

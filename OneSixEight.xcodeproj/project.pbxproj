@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2A4AE640188CE71300852B46 /* OSEPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */; };
-		2A4AE643188CEC2B00852B46 /* OSEBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AE642188CEC2B00852B46 /* OSEBaseTableViewController.m */; };
 		2A4AE646188CEE2000852B46 /* OSEPlanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AE645188CEE2000852B46 /* OSEPlanTableViewCell.m */; };
+		2A78E82218947ECD005AFF53 /* OSELogHoursCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A78E82118947ECD005AFF53 /* OSELogHoursCell.m */; };
+		2A78E82518947FB0005AFF53 /* OSELogHoursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A78E82418947FB0005AFF53 /* OSELogHoursViewController.m */; };
 		2A9B3FC7188B3B9C00752482 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9B3FC6188B3B9C00752482 /* Foundation.framework */; };
 		2A9B3FC9188B3B9C00752482 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9B3FC8188B3B9C00752482 /* CoreGraphics.framework */; };
 		2A9B3FCB188B3B9C00752482 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9B3FCA188B3B9C00752482 /* UIKit.framework */; };
@@ -51,10 +52,12 @@
 /* Begin PBXFileReference section */
 		2A4AE63E188CE71300852B46 /* OSEPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEPlanViewController.h; sourceTree = "<group>"; };
 		2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEPlanViewController.m; sourceTree = "<group>"; };
-		2A4AE641188CEC2B00852B46 /* OSEBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEBaseTableViewController.h; sourceTree = "<group>"; };
-		2A4AE642188CEC2B00852B46 /* OSEBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEBaseTableViewController.m; sourceTree = "<group>"; };
 		2A4AE644188CEE2000852B46 /* OSEPlanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEPlanTableViewCell.h; sourceTree = "<group>"; };
 		2A4AE645188CEE2000852B46 /* OSEPlanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEPlanTableViewCell.m; sourceTree = "<group>"; };
+		2A78E82018947ECD005AFF53 /* OSELogHoursCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSELogHoursCell.h; sourceTree = "<group>"; };
+		2A78E82118947ECD005AFF53 /* OSELogHoursCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSELogHoursCell.m; sourceTree = "<group>"; };
+		2A78E82318947FB0005AFF53 /* OSELogHoursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSELogHoursViewController.h; sourceTree = "<group>"; };
+		2A78E82418947FB0005AFF53 /* OSELogHoursViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSELogHoursViewController.m; sourceTree = "<group>"; };
 		2A9B3FC3188B3B9C00752482 /* OneSixEight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneSixEight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9B3FC6188B3B9C00752482 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2A9B3FC8188B3B9C00752482 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -223,12 +226,12 @@
 				2A9B4019188BF36600752482 /* UIView+OSE.m */,
 				2A9B4014188BEFC100752482 /* OSEBaseViewController.h */,
 				2A9B4015188BEFC100752482 /* OSEBaseViewController.m */,
-				2A4AE641188CEC2B00852B46 /* OSEBaseTableViewController.h */,
-				2A4AE642188CEC2B00852B46 /* OSEBaseTableViewController.m */,
-				2A9B4028188CDF7600752482 /* OSECheckTableViewCell.h */,
-				2A9B4029188CDF7600752482 /* OSECheckTableViewCell.m */,
 				2A4AE644188CEE2000852B46 /* OSEPlanTableViewCell.h */,
 				2A4AE645188CEE2000852B46 /* OSEPlanTableViewCell.m */,
+				2A78E82018947ECD005AFF53 /* OSELogHoursCell.h */,
+				2A78E82118947ECD005AFF53 /* OSELogHoursCell.m */,
+				2A9B4028188CDF7600752482 /* OSECheckTableViewCell.h */,
+				2A9B4029188CDF7600752482 /* OSECheckTableViewCell.m */,
 			);
 			name = "OSE Styleguide";
 			sourceTree = "<group>";
@@ -246,6 +249,8 @@
 				2A9B3FFF188B3E0C00752482 /* OSEImproveViewController.m */,
 				2A9B3FF5188B3DD400752482 /* OSESaveGoalViewController.h */,
 				2A9B3FF6188B3DD400752482 /* OSESaveGoalViewController.m */,
+				2A78E82318947FB0005AFF53 /* OSELogHoursViewController.h */,
+				2A78E82418947FB0005AFF53 /* OSELogHoursViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -347,7 +352,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A4AE646188CEE2000852B46 /* OSEPlanTableViewCell.m in Sources */,
-				2A4AE643188CEC2B00852B46 /* OSEBaseTableViewController.m in Sources */,
 				2A9B3FF7188B3DD400752482 /* OSESaveGoalViewController.m in Sources */,
 				2A9B4000188B3E0C00752482 /* OSEImproveViewController.m in Sources */,
 				2A9B3FFA188B3DE900752482 /* OSEDoViewController.m in Sources */,
@@ -361,8 +365,10 @@
 				2A9B4009188BDBF300752482 /* GoalList.xcdatamodeld in Sources */,
 				2A9B402A188CDF7600752482 /* OSECheckTableViewCell.m in Sources */,
 				2A9B3FFD188B3DFB00752482 /* OSECheckViewController.m in Sources */,
+				2A78E82518947FB0005AFF53 /* OSELogHoursViewController.m in Sources */,
 				2A9B4020188BF66800752482 /* UIButton+OSE.m in Sources */,
 				2A9B3FD3188B3B9C00752482 /* main.m in Sources */,
+				2A78E82218947ECD005AFF53 /* OSELogHoursCell.m in Sources */,
 				2A9B4016188BEFC100752482 /* OSEBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

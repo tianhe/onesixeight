@@ -12,5 +12,5 @@
 
 + (UILabel *)standardLabel;
 + (UILabel *)standardFullLabel;
-
++ (UILabel *)bigLabel;
 @end

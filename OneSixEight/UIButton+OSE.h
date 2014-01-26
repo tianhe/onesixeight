@@ -12,5 +12,6 @@
 
 + (UIButton *)standardButton;
 + (UIButton *)standardHalfButton;
++ (UIButton *)solidHalfButton;
 
 @end

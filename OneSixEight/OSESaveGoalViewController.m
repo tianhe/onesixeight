@@ -77,9 +77,9 @@
     [self.view addSubview:button];
 
     UIButton *quitButton = [UIButton standardHalfButton];
-    [quitButton setTitle:@"Quit" forState:UIControlStateNormal];
+    [quitButton setTitle:@"Cancel" forState:UIControlStateNormal];
     [quitButton setOriginAtX:180 andY:220];
-    [quitButton addTarget:self action:@selector(quit:) forControlEvents:UIControlEventTouchUpInside];
+    [quitButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:quitButton];
 }
 
@@ -88,6 +88,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma marks - first responders
 
 - (void)saveGoal:(id)sender
 {
@@ -113,7 +115,7 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)quit:(id)sender
+- (void)cancel:(id)sender
 {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
