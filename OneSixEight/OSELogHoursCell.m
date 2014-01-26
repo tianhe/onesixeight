@@ -14,12 +14,14 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.hoursInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(180, 0, 125, 40)];
+        self.hoursInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(250, 0, 50, 40)];
         self.hoursInfoLabel.textColor = [UIColor blackColor];
-        self.hoursInfoLabel.backgroundColor = [UIColor orangeColor];
         self.hoursInfoLabel.textAlignment = NSTextAlignmentRight;
-
         [self addSubview:self.hoursInfoLabel];
+        
+        self.progressBar = [[UIProgressView alloc] initWithFrame:CGRectMake(250, 0, 50, 40)];
+        self.progressBar.progressViewStyle = UIProgressViewStyleDefault;
+        [self addSubview:self.progressBar];
     }
     return self;
 }

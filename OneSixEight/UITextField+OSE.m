@@ -13,7 +13,7 @@
 {
     UITextField *oseTextField = [[UITextField alloc] init];
     oseTextField.backgroundColor = [UIColor whiteColor];
-    oseTextField.frame = CGRectMake(0, 0, 100, 40);
+    oseTextField.frame = CGRectMake(0, 0, 160, 40);
     oseTextField.borderStyle = UITextBorderStyleRoundedRect;
     
     return oseTextField;

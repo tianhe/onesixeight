@@ -87,9 +87,11 @@
     
     float loggedHours = [goal.loggedHours floatValue];
     float targetHours = [goal.targetHours floatValue];
-    NSString *string = [NSString stringWithFormat:@"%0.0f/%0.0f (%0.0f%%)", loggedHours, targetHours, loggedHours/targetHours*100 ];
+    NSString *string = [NSString stringWithFormat:@"%0.1f", loggedHours];
     cell.hoursInfoLabel.text = string;
     
+    cell.progressBar.progress = loggedHours/targetHours;
+
     return cell;
 }
 

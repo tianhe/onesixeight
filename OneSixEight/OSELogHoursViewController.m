@@ -41,18 +41,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    UILabel *nameLabel = [UILabel standardLabel];
+    UILabel *nameLabel = [UILabel standardFullLabel];
     nameLabel.text = self.goal.name;
+    nameLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
     [nameLabel setOriginAtX:20 andY:40];
     [self.view addSubview:nameLabel];
 
-    UILabel *targetHoursLabel = [UILabel standardLabel];
-    targetHoursLabel.text = [self.goal.targetHours stringValue];
+    UILabel *targetHoursLabel = [UILabel standardFullLabel];
+    targetHoursLabel.text = [NSString stringWithFormat:@"Target %@ Hours", [self.goal.targetHours stringValue]];
+    targetHoursLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
     [targetHoursLabel setOriginAtX:20 andY:80];
     [self.view addSubview:targetHoursLabel];
 
     self.loggedHoursLabel = [UILabel bigLabel];
-    [self.loggedHoursLabel setOriginAtX:20 andY:160];
+    [self.loggedHoursLabel setOriginAtX:20 andY:140];
     self.loggedHoursLabel.text = [self.goal.loggedHours stringValue];
     [self.view addSubview:self.loggedHoursLabel];
     
@@ -68,15 +70,15 @@
     [self.plusButton addTarget:self action:@selector(addThirty:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.plusButton];
     
-    UIButton *button = [UIButton standardHalfButton];
+    UIButton *button = [UIButton standardButton];
     [button setTitle:@"Save" forState:UIControlStateNormal];
-    [button setOriginAtX:20 andY:370];
+    [button setOriginAtX:20 andY:330];
     [button addTarget:self action:@selector(logGoal:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     
-    UIButton *quitButton = [UIButton standardHalfButton];
+    UIButton *quitButton = [UIButton standardRedButton];
     [quitButton setTitle:@"Cancel" forState:UIControlStateNormal];
-    [quitButton setOriginAtX:180 andY:370];
+    [quitButton setOriginAtX:20 andY:390];
     [quitButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:quitButton];
 }

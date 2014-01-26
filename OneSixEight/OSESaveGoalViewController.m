@@ -69,18 +69,18 @@
     self.targetHoursField.text = [self.goal.targetHours stringValue];
     [self.view addSubview:self.targetHoursField];
     
-    UIButton *button = [UIButton standardHalfButton];
+    UIButton *button = [UIButton standardButton];
     [button setTitle:@"Save" forState:UIControlStateNormal];
     [button setOriginAtX:20 andY:220];
     [button addTarget:self action:@selector(saveGoal:) forControlEvents:UIControlEventTouchUpInside];
 
     [self.view addSubview:button];
 
-    UIButton *quitButton = [UIButton standardHalfButton];
-    [quitButton setTitle:@"Cancel" forState:UIControlStateNormal];
-    [quitButton setOriginAtX:180 andY:220];
-    [quitButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:quitButton];
+    UIButton *cancelButton = [UIButton standardRedButton];
+    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [cancelButton setOriginAtX:20 andY:280];
+    [cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:cancelButton];
 }
 
 - (void)didReceiveMemoryWarning

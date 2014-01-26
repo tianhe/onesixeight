@@ -30,16 +30,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor orangeColor];
+    
 	// Do any additional setup after loading the view.
-    float height = [UIScreen mainScreen].bounds.size.height - 60 - 60 - 100;
+    float height = [UIScreen mainScreen].bounds.size.height - 60 - 60 - 60;
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,40,[UIScreen mainScreen].bounds.size.width,height)];
     [self.tableView registerClass:[OSEPlanTableViewCell class] forCellReuseIdentifier:@"planGoalCellIdentifier"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+
     [self.view addSubview:self.tableView];
     
     self.totalLabel = [UILabel standardFullLabel];
-    float y = height + 40 + 20;
+    float y = height + 40;
     [self.totalLabel setOriginAtX:20 andY:y];
     [self.view addSubview:self.totalLabel];
 
