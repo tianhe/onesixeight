@@ -12,6 +12,10 @@
 
 @interface OSEPlanViewController ()
 
+@property UITableView *tableView;
+@property UILabel *totalLabel;
+@property UILabel *dateLabel;
+
 @end
 
 @implementation OSEPlanViewController
@@ -33,25 +37,20 @@
     self.view.backgroundColor = [UIColor orangeColor];
     
 	// Do any additional setup after loading the view.
-    float height = [UIScreen mainScreen].bounds.size.height - 60 - 60 - 60;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,40,[UIScreen mainScreen].bounds.size.width,height)];
+    float height = [UIScreen mainScreen].bounds.size.height-20;
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,[UIScreen mainScreen].bounds.size.width,height) style:UITableViewStylePlain];
     [self.tableView registerClass:[OSEPlanTableViewCell class] forCellReuseIdentifier:@"planGoalCellIdentifier"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-
     [self.view addSubview:self.tableView];
     
-    self.totalLabel = [UILabel standardFullLabel];
-    float y = height + 40;
-    [self.totalLabel setOriginAtX:20 andY:y];
-    [self.view addSubview:self.totalLabel];
-
-    UIButton *addButton = [UIButton standardButton];
-    [addButton setTitle:@"New Goal" forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(createNewGoal:) forControlEvents:UIControlEventTouchUpInside];
-    y = [UIScreen mainScreen].bounds.size.height - 40 - 60;
-    [addButton setOriginAtX:20 andY:y];
-    [self.view addSubview:addButton];    
+    //Edit Button
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    //Add Button
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewGoal:)];
+    self.navigationItem.rightBarButtonItem = addButton;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,11 +58,9 @@
     [super viewWillAppear:animated];
     
     OSEAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-    self.fetchedGoals = [appDelegate getAllGoals];
+    self.fetchedGoals = [appDelegate fetchGoalsFromWeekStarting:self.dateManager.date];
     
-    NSNumber *sum = [self.fetchedGoals valueForKeyPath:@"@sum.targetHours"];
-    NSString *totalHours = [NSString stringWithFormat:@"Planned Hours:   %d of 168 (%d%%)", [sum intValue], [sum intValue]*100/168];
-    self.totalLabel.text = totalHours;    
+    [self _updateTotals];
     [self.tableView reloadData];
 }
 
@@ -76,7 +73,7 @@
 #pragma mark - responders
 - (void)createNewGoal:(id)target
 {
-    OSESaveGoalViewController *goalController = [[OSESaveGoalViewController alloc] init];
+    OSESaveGoalViewController *goalController = [[OSESaveGoalViewController alloc] initWithDate:self.dateManager.date];
     [self presentViewController:goalController animated:YES completion:nil];
 }
 
@@ -116,6 +113,67 @@
     
     OSESaveGoalViewController *goalController = [[OSESaveGoalViewController alloc] initWithGoal:goal];
     [self presentViewController:goalController animated:YES completion:nil];
+}
+
+//Edit Controls
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (!self.editing || !indexPath) {
+        return UITableViewCellEditingStyleNone;
+    }
+    
+    if (self.editing && indexPath.row == [self.fetchedGoals count]) {
+        return UITableViewCellEditingStyleNone;
+    } else {
+        return UITableViewCellEditingStyleDelete;
+    }
+    
+    return UITableViewCellEditingStyleNone;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete){
+        [self _removeGoalAtIndexPath:indexPath];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+        [self.tableView reloadData];
+        [self _updateTotals];
+    }
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    [self.tableView setEditing:editing animated:YES];
+    [self.tableView reloadData];
+
+    if (editing){
+        // Change views to edit mode.
+        [self.navigationItem.leftBarButtonItem setTitle:@"Done"];
+    }
+    else {
+        // Save the changes if needed and change the views to noneditable.
+        [self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
+    }
+}
+
+#pragma marks - private methods
+- (void)_updateTotals
+{
+    NSNumber *sum = [self.fetchedGoals valueForKeyPath:@"@sum.targetHours"];
+    NSString *totalHours = [NSString stringWithFormat:@"%d%% Planned", [sum intValue]*100/168];
+    self.navigationItem.title = totalHours;
+}
+
+- (void)_removeGoalAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.managedObjectContext deleteObject:self.fetchedGoals[indexPath.row]];
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    [self.fetchedGoals removeObjectAtIndex:indexPath.row];
 }
 
 @end

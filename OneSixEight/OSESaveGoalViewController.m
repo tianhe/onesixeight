@@ -10,9 +10,9 @@
 
 @interface OSESaveGoalViewController ()
 
-@property UITextField *startDateField;
 @property UITextField *targetHoursField;
 @property UITextField *nameField;
+@property NSDate *date;
 
 @end
 
@@ -23,6 +23,15 @@
     self = [super init];
     if (self){
         self.goal = goal;
+    }
+    return self;
+}
+
+- (id)initWithDate:(NSDate *)date
+{
+    self = [super init];
+    if (self){
+        self.date = date;
     }
     return self;
 }
@@ -50,22 +59,13 @@
     self.nameField.text = self.goal.name;
     [self.view addSubview:self.nameField];
     
-    UILabel *startDateLabel = [UILabel standardLabel];
-    startDateLabel.text = @"Start Date";
-    [startDateLabel setOriginAtX:20 andY:100];
-    [self.view addSubview:startDateLabel];
-
-    self.startDateField = [UITextField standardTextField];
-    [self.startDateField setOriginAtX:140 andY:100];
-    [self.view addSubview:self.startDateField];
-    
     UILabel *targetHoursLabel = [UILabel standardLabel];
     targetHoursLabel.text = @"Target Hours";
-    [targetHoursLabel setOriginAtX:20 andY:160];
+    [targetHoursLabel setOriginAtX:20 andY:100];
     [self.view addSubview:targetHoursLabel];
 
     self.targetHoursField = [UITextField standardTextField];
-    [self.targetHoursField setOriginAtX:140 andY:160];
+    [self.targetHoursField setOriginAtX:140 andY:100];
     self.targetHoursField.text = [self.goal.targetHours stringValue];
     [self.view addSubview:self.targetHoursField];
     
@@ -98,8 +98,8 @@
                                                   inManagedObjectContext:self.managedObjectContext];
     }
     
-    self.goal.startDate = [self.dateFormatter dateFromString:self.startDateField.text];
-    self.goal.endDate = [self.goal.startDate dateByAddingTimeInterval:7*24*60*60];
+    self.goal.startDate = self.date;
+    self.goal.endDate = [self.date dateByAddingTimeInterval:7*24*60*60];
     self.goal.targetHours = [NSDecimalNumber decimalNumberWithString:self.targetHoursField.text];
     self.goal.name = self.nameField.text;
 

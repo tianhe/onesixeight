@@ -14,5 +14,6 @@
 + (UIButton *)standardHalfButton;
 + (UIButton *)solidHalfButton;
 + (UIButton *)standardRedButton;
++ (UIButton *)standardQuarterButton;
 
 @end

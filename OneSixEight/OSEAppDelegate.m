@@ -11,6 +11,8 @@
 #import "OSECheckViewController.h"
 #import "OSEDoViewController.h"
 #import "OSEImproveViewController.h"
+#import "OSECalendarViewController.h"
+#import "OSEDateManager.h"
 
 @implementation OSEAppDelegate
 
@@ -22,18 +24,18 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewController1 = [[OSEPlanViewController alloc] init];
-    UIViewController *viewController2 = [[OSEDoViewController alloc] init];
-    UIViewController *viewController3 = [[OSECheckViewController alloc] init];
-    UIViewController *viewController4 = [[OSEImproveViewController alloc] init];
+    OSEDateManager *dateManager = [[OSEDateManager alloc] initWithDate:[NSDate thisSunday]];
     
+    UIViewController *viewController0 = [[OSECalendarViewController alloc] initWithDateManager:dateManager];
+    UIViewController *viewController1 = [[OSEPlanViewController alloc] initWithDateManager:dateManager];
+    UIViewController *viewController2 = [[OSEDoViewController alloc] initWithDateManager:dateManager];
+    UIViewController *viewController3 = [[OSECheckViewController alloc] initWithDateManager:dateManager];
+    UIViewController *viewController4 = [[OSEImproveViewController alloc] initWithDateManager:dateManager];
     UINavigationController *navController1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
-    navController1.navigationBarHidden = YES;
     UINavigationController *navController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
-    navController2.navigationBarHidden = YES;
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navController1, navController2, viewController3, viewController4, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController0, navController1, navController2, viewController3, viewController4, nil];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
@@ -106,14 +108,34 @@
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
-- (NSArray *)getAllGoals {
+- (NSMutableArray *)getAllGoals {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Goal" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     NSError *error;
     
     NSArray *fetchedGoals = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    return fetchedGoals;
+    return [NSMutableArray arrayWithArray:fetchedGoals];
 }
+
+- (NSMutableArray *)fetchGoalsFromWeekStarting:(NSDate *)date
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Goal" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"startDate == %@", date];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *fetchedGoals = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    return [NSMutableArray arrayWithArray:fetchedGoals];
+}
+
+- (void)removeGoal:(Goal *)goal {
+    [self.managedObjectContext deleteObject:goal];
+//    [self.managedObjectContext save];
+}
+
 
 @end

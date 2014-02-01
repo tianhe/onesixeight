@@ -11,6 +11,7 @@
 @interface OSESaveGoalViewController : OSEBaseViewController
 
 - (id)initWithGoal:(Goal *)goal;
+- (id)initWithDate:(NSDate *)date;
 
 @property Goal *goal;
 

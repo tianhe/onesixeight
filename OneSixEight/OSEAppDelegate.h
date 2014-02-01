@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Goal.h"
 
 @interface OSEAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -17,6 +18,8 @@
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
--(NSArray *)getAllGoals;
+- (NSMutableArray *)getAllGoals;
+- (NSMutableArray *)fetchGoalsFromWeekStarting:(NSDate *)date;
+- (void)removeGoal:(Goal *)goal;
 
 @end

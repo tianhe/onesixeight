@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2A4AE640188CE71300852B46 /* OSEPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */; };
 		2A4AE646188CEE2000852B46 /* OSEPlanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AE645188CEE2000852B46 /* OSEPlanTableViewCell.m */; };
+		2A5A477518972B3400AF4857 /* NSDate+OSE.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A477418972B3400AF4857 /* NSDate+OSE.m */; };
+		2A5A4778189D47D900AF4857 /* OSECalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A4777189D47D900AF4857 /* OSECalendarViewController.m */; };
+		2A5A477B189D4AB600AF4857 /* OSEDateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A477A189D4AB600AF4857 /* OSEDateManager.m */; };
 		2A78E82218947ECD005AFF53 /* OSELogHoursCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A78E82118947ECD005AFF53 /* OSELogHoursCell.m */; };
 		2A78E82518947FB0005AFF53 /* OSELogHoursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A78E82418947FB0005AFF53 /* OSELogHoursViewController.m */; };
 		2A9B3FC7188B3B9C00752482 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9B3FC6188B3B9C00752482 /* Foundation.framework */; };
@@ -54,6 +57,12 @@
 		2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEPlanViewController.m; sourceTree = "<group>"; };
 		2A4AE644188CEE2000852B46 /* OSEPlanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEPlanTableViewCell.h; sourceTree = "<group>"; };
 		2A4AE645188CEE2000852B46 /* OSEPlanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEPlanTableViewCell.m; sourceTree = "<group>"; };
+		2A5A477318972B3400AF4857 /* NSDate+OSE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+OSE.h"; sourceTree = "<group>"; };
+		2A5A477418972B3400AF4857 /* NSDate+OSE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+OSE.m"; sourceTree = "<group>"; };
+		2A5A4776189D47D900AF4857 /* OSECalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSECalendarViewController.h; sourceTree = "<group>"; };
+		2A5A4777189D47D900AF4857 /* OSECalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSECalendarViewController.m; sourceTree = "<group>"; };
+		2A5A4779189D4AB600AF4857 /* OSEDateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEDateManager.h; sourceTree = "<group>"; };
+		2A5A477A189D4AB600AF4857 /* OSEDateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEDateManager.m; sourceTree = "<group>"; };
 		2A78E82018947ECD005AFF53 /* OSELogHoursCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSELogHoursCell.h; sourceTree = "<group>"; };
 		2A78E82118947ECD005AFF53 /* OSELogHoursCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSELogHoursCell.m; sourceTree = "<group>"; };
 		2A78E82318947FB0005AFF53 /* OSELogHoursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSELogHoursViewController.h; sourceTree = "<group>"; };
@@ -127,6 +136,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A5A477C189D4ABE00AF4857 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A5A4779189D4AB600AF4857 /* OSEDateManager.h */,
+				2A5A477A189D4AB600AF4857 /* OSEDateManager.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		2A9B3FBA188B3B9C00752482 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				2A9B4010188BE60B00752482 /* OSE Styleguide */,
+				2A5A477C189D4ABE00AF4857 /* Model */,
 				2A9B4001188B9C8D00752482 /* CoreDataModels */,
 				2A9B4017188BF2C200752482 /* View Controllers */,
 				2A9B3FD5188B3B9C00752482 /* OSEAppDelegate.h */,
@@ -224,6 +243,8 @@
 				2A9B401F188BF66800752482 /* UIButton+OSE.m */,
 				2A9B4018188BF36600752482 /* UIView+OSE.h */,
 				2A9B4019188BF36600752482 /* UIView+OSE.m */,
+				2A5A477318972B3400AF4857 /* NSDate+OSE.h */,
+				2A5A477418972B3400AF4857 /* NSDate+OSE.m */,
 				2A9B4014188BEFC100752482 /* OSEBaseViewController.h */,
 				2A9B4015188BEFC100752482 /* OSEBaseViewController.m */,
 				2A4AE644188CEE2000852B46 /* OSEPlanTableViewCell.h */,
@@ -239,6 +260,8 @@
 		2A9B4017188BF2C200752482 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2A5A4776189D47D900AF4857 /* OSECalendarViewController.h */,
+				2A5A4777189D47D900AF4857 /* OSECalendarViewController.m */,
 				2A4AE63E188CE71300852B46 /* OSEPlanViewController.h */,
 				2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */,
 				2A9B3FF8188B3DE900752482 /* OSEDoViewController.h */,
@@ -363,9 +386,12 @@
 				2A9B401A188BF36600752482 /* UIView+OSE.m in Sources */,
 				2A9B400F188BE5FB00752482 /* NSDateFormatter+OSE.m in Sources */,
 				2A9B4009188BDBF300752482 /* GoalList.xcdatamodeld in Sources */,
+				2A5A477518972B3400AF4857 /* NSDate+OSE.m in Sources */,
 				2A9B402A188CDF7600752482 /* OSECheckTableViewCell.m in Sources */,
 				2A9B3FFD188B3DFB00752482 /* OSECheckViewController.m in Sources */,
+				2A5A477B189D4AB600AF4857 /* OSEDateManager.m in Sources */,
 				2A78E82518947FB0005AFF53 /* OSELogHoursViewController.m in Sources */,
+				2A5A4778189D47D900AF4857 /* OSECalendarViewController.m in Sources */,
 				2A9B4020188BF66800752482 /* UIButton+OSE.m in Sources */,
 				2A9B3FD3188B3B9C00752482 /* main.m in Sources */,
 				2A78E82218947ECD005AFF53 /* OSELogHoursCell.m in Sources */,

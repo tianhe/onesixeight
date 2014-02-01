@@ -31,7 +31,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     OSEAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-    self.fetchedGoals = [appDelegate getAllGoals];
+    self.fetchedGoals = [appDelegate fetchGoalsFromWeekStarting:self.dateManager.date];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame];
     [self.tableView setOriginAtX:0 andY:40];

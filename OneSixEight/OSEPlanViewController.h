@@ -10,6 +10,4 @@
 
 @interface OSEPlanViewController : OSEBaseViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property UITableView *tableView;
-@property UILabel *totalLabel;
 @end

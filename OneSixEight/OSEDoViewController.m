@@ -32,7 +32,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     float height = [UIScreen mainScreen].bounds.size.height - 60;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,40,[UIScreen mainScreen].bounds.size.width,height)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,[UIScreen mainScreen].bounds.size.width,height)];
     [self.tableView registerClass:[OSELogHoursCell class] forCellReuseIdentifier:@"logHoursCellIdentifier"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -45,8 +45,10 @@
     [super viewWillAppear:animated];
     
     OSEAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-    self.fetchedGoals = [appDelegate getAllGoals];
+    self.fetchedGoals = [appDelegate fetchGoalsFromWeekStarting:self.dateManager.date];
     [self.tableView reloadData];
+    
+    [self _updateCompletion];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,6 +103,15 @@
     
     OSELogHoursViewController *goalController = [[OSELogHoursViewController alloc] initWithGoal:goal];
     [self presentViewController:goalController animated:YES completion:nil];
+}
+
+#pragma mark - private methods
+
+- (void)_updateCompletion
+{
+    NSNumber *sum = [self.fetchedGoals valueForKeyPath:@"@sum.loggedHours"];
+    NSString *totalHours = [NSString stringWithFormat:@"%d%% Completed", [sum intValue]*100/168];
+    self.navigationItem.title = totalHours;
 }
 
 @end

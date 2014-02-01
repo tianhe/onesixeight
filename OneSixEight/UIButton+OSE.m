@@ -63,4 +63,20 @@
     oseButton.frame = CGRectMake(0, 0, 120, 40);
     return oseButton;
 }
+
++ (UIButton *)standardQuarterButton
+{
+    UIButton *oseButton = [[UIButton alloc] init];
+    [oseButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [oseButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [oseButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    
+    [oseButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:12.0]];
+
+    [oseButton.layer setBorderColor:[[UIColor blueColor] CGColor]];
+    oseButton.backgroundColor = [UIColor clearColor];
+    oseButton.frame = CGRectMake(0, 0, 60, 40);
+    return oseButton;
+}
+
 @end

@@ -1,4 +1,4 @@
-//
+    //
 //  OSEBaseViewController.m
 //  OneSixEight
 //
@@ -14,15 +14,26 @@
 
 @implementation OSEBaseViewController
 
+- (id)initWithDateManager:(OSEDateManager *)dateManager
+{
+    self = [super init];
+    if (self) {
+        self.dateManager = dateManager;
+        self.dateFormatter = [NSDateFormatter standardDateFormat];
+        self.appDelegate = [UIApplication sharedApplication].delegate;
+        self.managedObjectContext = self.appDelegate.managedObjectContext;
+    }
+    return self;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         self.dateFormatter = [NSDateFormatter standardDateFormat];
-
-        OSEAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-        self.managedObjectContext = appDelegate.managedObjectContext;
+        self.appDelegate = [UIApplication sharedApplication].delegate;
+        self.managedObjectContext = self.appDelegate.managedObjectContext;
     }
     return self;
 }
