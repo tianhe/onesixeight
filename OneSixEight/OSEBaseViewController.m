@@ -14,14 +14,13 @@
 
 @implementation OSEBaseViewController
 
-- (id)initWithDateManager:(OSEDateManager *)dateManager
+- (id)initWithDateManager:(OSEDateManager *)dateManager goalsManager:(OSEGoalsManager *)goalsManager
 {
     self = [super init];
     if (self) {
         self.dateManager = dateManager;
+        self.goalsManager = goalsManager;
         self.dateFormatter = [NSDateFormatter standardDateFormat];
-        self.appDelegate = [UIApplication sharedApplication].delegate;
-        self.managedObjectContext = self.appDelegate.managedObjectContext;
     }
     return self;
 }
@@ -32,8 +31,6 @@
     if (self) {
         // Custom initialization
         self.dateFormatter = [NSDateFormatter standardDateFormat];
-        self.appDelegate = [UIApplication sharedApplication].delegate;
-        self.managedObjectContext = self.appDelegate.managedObjectContext;
     }
     return self;
 }

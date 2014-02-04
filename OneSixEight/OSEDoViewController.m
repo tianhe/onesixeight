@@ -44,8 +44,7 @@
 {
     [super viewWillAppear:animated];
     
-    OSEAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-    self.fetchedGoals = [appDelegate fetchGoalsFromWeekStarting:self.dateManager.date];
+    self.fetchedGoals = [self.goalsManager fetchGoalsFromWeekStarting:self.dateManager.date];
     [self.tableView reloadData];
     
     [self _updateCompletion];
@@ -110,7 +109,7 @@
 - (void)_updateCompletion
 {
     NSNumber *sum = [self.fetchedGoals valueForKeyPath:@"@sum.loggedHours"];
-    NSString *totalHours = [NSString stringWithFormat:@"%d%% Completed", [sum intValue]*100/168];
+    NSString *totalHours = [NSString stringWithFormat:@"Completed (%d%%)", [sum intValue]*100/168];
     self.navigationItem.title = totalHours;
 }
 

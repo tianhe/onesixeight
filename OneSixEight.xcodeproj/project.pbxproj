@@ -8,10 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		2A4AE640188CE71300852B46 /* OSEPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */; };
-		2A4AE646188CEE2000852B46 /* OSEPlanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AE645188CEE2000852B46 /* OSEPlanTableViewCell.m */; };
+		2A4AE646188CEE2000852B46 /* OSEPlanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AE645188CEE2000852B46 /* OSEPlanCell.m */; };
 		2A5A477518972B3400AF4857 /* NSDate+OSE.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A477418972B3400AF4857 /* NSDate+OSE.m */; };
 		2A5A4778189D47D900AF4857 /* OSECalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A4777189D47D900AF4857 /* OSECalendarViewController.m */; };
 		2A5A477B189D4AB600AF4857 /* OSEDateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A477A189D4AB600AF4857 /* OSEDateManager.m */; };
+		2A5A477F189DC92B00AF4857 /* OSEGoalsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A477E189DC92B00AF4857 /* OSEGoalsManager.m */; };
+		2A5A478D189FD94000AF4857 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A478C189FD94000AF4857 /* Note.m */; };
+		2A5A4790189FDBE100AF4857 /* OSENotesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A478F189FDBE100AF4857 /* OSENotesManager.m */; };
+		2A5A4793189FDE7E00AF4857 /* OSENoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A4792189FDE7E00AF4857 /* OSENoteCell.m */; };
+		2A5A4796189FE1A200AF4857 /* OSESaveNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A4795189FE1A200AF4857 /* OSESaveNoteViewController.m */; };
 		2A78E82218947ECD005AFF53 /* OSELogHoursCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A78E82118947ECD005AFF53 /* OSELogHoursCell.m */; };
 		2A78E82518947FB0005AFF53 /* OSELogHoursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A78E82418947FB0005AFF53 /* OSELogHoursViewController.m */; };
 		2A9B3FC7188B3B9C00752482 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9B3FC6188B3B9C00752482 /* Foundation.framework */; };
@@ -29,7 +34,7 @@
 		2A9B3FF7188B3DD400752482 /* OSESaveGoalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B3FF6188B3DD400752482 /* OSESaveGoalViewController.m */; };
 		2A9B3FFA188B3DE900752482 /* OSEDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B3FF9188B3DE900752482 /* OSEDoViewController.m */; };
 		2A9B3FFD188B3DFB00752482 /* OSECheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B3FFC188B3DFB00752482 /* OSECheckViewController.m */; };
-		2A9B4000188B3E0C00752482 /* OSEImproveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B3FFF188B3E0C00752482 /* OSEImproveViewController.m */; };
+		2A9B4000188B3E0C00752482 /* OSENotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B3FFF188B3E0C00752482 /* OSENotesViewController.m */; };
 		2A9B4006188BDB9700752482 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9B4005188BDB9700752482 /* CoreData.framework */; };
 		2A9B4009188BDBF300752482 /* GoalList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B4007188BDBF300752482 /* GoalList.xcdatamodeld */; };
 		2A9B400C188BE0AC00752482 /* Goal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B400B188BE0AC00752482 /* Goal.m */; };
@@ -39,7 +44,7 @@
 		2A9B401A188BF36600752482 /* UIView+OSE.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B4019188BF36600752482 /* UIView+OSE.m */; };
 		2A9B401D188BF3A700752482 /* UILabel+OSE.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B401C188BF3A700752482 /* UILabel+OSE.m */; };
 		2A9B4020188BF66800752482 /* UIButton+OSE.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B401F188BF66800752482 /* UIButton+OSE.m */; };
-		2A9B402A188CDF7600752482 /* OSECheckTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B4029188CDF7600752482 /* OSECheckTableViewCell.m */; };
+		2A9B402A188CDF7600752482 /* OSECheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B4029188CDF7600752482 /* OSECheckCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,14 +60,24 @@
 /* Begin PBXFileReference section */
 		2A4AE63E188CE71300852B46 /* OSEPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEPlanViewController.h; sourceTree = "<group>"; };
 		2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEPlanViewController.m; sourceTree = "<group>"; };
-		2A4AE644188CEE2000852B46 /* OSEPlanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEPlanTableViewCell.h; sourceTree = "<group>"; };
-		2A4AE645188CEE2000852B46 /* OSEPlanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEPlanTableViewCell.m; sourceTree = "<group>"; };
+		2A4AE644188CEE2000852B46 /* OSEPlanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEPlanCell.h; sourceTree = "<group>"; };
+		2A4AE645188CEE2000852B46 /* OSEPlanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEPlanCell.m; sourceTree = "<group>"; };
 		2A5A477318972B3400AF4857 /* NSDate+OSE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+OSE.h"; sourceTree = "<group>"; };
 		2A5A477418972B3400AF4857 /* NSDate+OSE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+OSE.m"; sourceTree = "<group>"; };
 		2A5A4776189D47D900AF4857 /* OSECalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSECalendarViewController.h; sourceTree = "<group>"; };
 		2A5A4777189D47D900AF4857 /* OSECalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSECalendarViewController.m; sourceTree = "<group>"; };
 		2A5A4779189D4AB600AF4857 /* OSEDateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEDateManager.h; sourceTree = "<group>"; };
 		2A5A477A189D4AB600AF4857 /* OSEDateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEDateManager.m; sourceTree = "<group>"; };
+		2A5A477D189DC92B00AF4857 /* OSEGoalsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEGoalsManager.h; sourceTree = "<group>"; };
+		2A5A477E189DC92B00AF4857 /* OSEGoalsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEGoalsManager.m; sourceTree = "<group>"; };
+		2A5A478B189FD94000AF4857 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		2A5A478C189FD94000AF4857 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		2A5A478E189FDBA300AF4857 /* OSENotesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSENotesManager.h; sourceTree = "<group>"; };
+		2A5A478F189FDBE100AF4857 /* OSENotesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSENotesManager.m; sourceTree = "<group>"; };
+		2A5A4791189FDE7E00AF4857 /* OSENoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSENoteCell.h; sourceTree = "<group>"; };
+		2A5A4792189FDE7E00AF4857 /* OSENoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSENoteCell.m; sourceTree = "<group>"; };
+		2A5A4794189FE1A200AF4857 /* OSESaveNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSESaveNoteViewController.h; sourceTree = "<group>"; };
+		2A5A4795189FE1A200AF4857 /* OSESaveNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSESaveNoteViewController.m; sourceTree = "<group>"; };
 		2A78E82018947ECD005AFF53 /* OSELogHoursCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSELogHoursCell.h; sourceTree = "<group>"; };
 		2A78E82118947ECD005AFF53 /* OSELogHoursCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSELogHoursCell.m; sourceTree = "<group>"; };
 		2A78E82318947FB0005AFF53 /* OSELogHoursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSELogHoursViewController.h; sourceTree = "<group>"; };
@@ -89,8 +104,8 @@
 		2A9B3FF9188B3DE900752482 /* OSEDoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEDoViewController.m; sourceTree = "<group>"; };
 		2A9B3FFB188B3DFB00752482 /* OSECheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSECheckViewController.h; sourceTree = "<group>"; };
 		2A9B3FFC188B3DFB00752482 /* OSECheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSECheckViewController.m; sourceTree = "<group>"; };
-		2A9B3FFE188B3E0C00752482 /* OSEImproveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEImproveViewController.h; sourceTree = "<group>"; };
-		2A9B3FFF188B3E0C00752482 /* OSEImproveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEImproveViewController.m; sourceTree = "<group>"; };
+		2A9B3FFE188B3E0C00752482 /* OSENotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSENotesViewController.h; sourceTree = "<group>"; };
+		2A9B3FFF188B3E0C00752482 /* OSENotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSENotesViewController.m; sourceTree = "<group>"; };
 		2A9B4005188BDB9700752482 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2A9B4008188BDBF300752482 /* GoalList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoalList.xcdatamodel; sourceTree = "<group>"; };
 		2A9B400A188BE0AC00752482 /* Goal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Goal.h; path = ../Goal.h; sourceTree = "<group>"; };
@@ -107,8 +122,8 @@
 		2A9B401C188BF3A700752482 /* UILabel+OSE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+OSE.m"; sourceTree = "<group>"; };
 		2A9B401E188BF66800752482 /* UIButton+OSE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+OSE.h"; sourceTree = "<group>"; };
 		2A9B401F188BF66800752482 /* UIButton+OSE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+OSE.m"; sourceTree = "<group>"; };
-		2A9B4028188CDF7600752482 /* OSECheckTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSECheckTableViewCell.h; sourceTree = "<group>"; };
-		2A9B4029188CDF7600752482 /* OSECheckTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSECheckTableViewCell.m; sourceTree = "<group>"; };
+		2A9B4028188CDF7600752482 /* OSECheckCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSECheckCell.h; sourceTree = "<group>"; };
+		2A9B4029188CDF7600752482 /* OSECheckCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSECheckCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,13 +151,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A5A477C189D4ABE00AF4857 /* Model */ = {
+		2A5A477C189D4ABE00AF4857 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				2A5A4779189D4AB600AF4857 /* OSEDateManager.h */,
 				2A5A477A189D4AB600AF4857 /* OSEDateManager.m */,
+				2A5A477D189DC92B00AF4857 /* OSEGoalsManager.h */,
+				2A5A477E189DC92B00AF4857 /* OSEGoalsManager.m */,
+				2A5A478E189FDBA300AF4857 /* OSENotesManager.h */,
+				2A5A478F189FDBE100AF4857 /* OSENotesManager.m */,
 			);
-			name = Model;
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		2A5A4783189FC40E00AF4857 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				2A5A4776189D47D900AF4857 /* OSECalendarViewController.h */,
+				2A5A4777189D47D900AF4857 /* OSECalendarViewController.m */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		2A5A4784189FC42400AF4857 /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				2A4AE63E188CE71300852B46 /* OSEPlanViewController.h */,
+				2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */,
+				2A9B3FF5188B3DD400752482 /* OSESaveGoalViewController.h */,
+				2A9B3FF6188B3DD400752482 /* OSESaveGoalViewController.m */,
+			);
+			name = Plan;
+			sourceTree = "<group>";
+		};
+		2A5A4785189FC43800AF4857 /* Do */ = {
+			isa = PBXGroup;
+			children = (
+				2A9B3FF8188B3DE900752482 /* OSEDoViewController.h */,
+				2A9B3FF9188B3DE900752482 /* OSEDoViewController.m */,
+				2A78E82318947FB0005AFF53 /* OSELogHoursViewController.h */,
+				2A78E82418947FB0005AFF53 /* OSELogHoursViewController.m */,
+			);
+			name = Do;
+			sourceTree = "<group>";
+		};
+		2A5A4786189FC4D000AF4857 /* Check */ = {
+			isa = PBXGroup;
+			children = (
+				2A9B3FFB188B3DFB00752482 /* OSECheckViewController.h */,
+				2A9B3FFC188B3DFB00752482 /* OSECheckViewController.m */,
+			);
+			name = Check;
+			sourceTree = "<group>";
+		};
+		2A5A4787189FC4DC00AF4857 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				2A9B3FFE188B3E0C00752482 /* OSENotesViewController.h */,
+				2A9B3FFF188B3E0C00752482 /* OSENotesViewController.m */,
+				2A5A4794189FE1A200AF4857 /* OSESaveNoteViewController.h */,
+				2A5A4795189FE1A200AF4857 /* OSESaveNoteViewController.m */,
+			);
+			name = Notes;
 			sourceTree = "<group>";
 		};
 		2A9B3FBA188B3B9C00752482 = {
@@ -180,14 +250,13 @@
 			isa = PBXGroup;
 			children = (
 				2A9B4010188BE60B00752482 /* OSE Styleguide */,
-				2A5A477C189D4ABE00AF4857 /* Model */,
+				2A5A477C189D4ABE00AF4857 /* Managers */,
 				2A9B4001188B9C8D00752482 /* CoreDataModels */,
 				2A9B4017188BF2C200752482 /* View Controllers */,
 				2A9B3FD5188B3B9C00752482 /* OSEAppDelegate.h */,
 				2A9B3FD6188B3B9C00752482 /* OSEAppDelegate.m */,
 				2A9B3FD8188B3B9C00752482 /* Images.xcassets */,
 				2A9B3FCD188B3B9C00752482 /* Supporting Files */,
-				2A9B4007188BDBF300752482 /* GoalList.xcdatamodeld */,
 			);
 			path = OneSixEight;
 			sourceTree = "<group>";
@@ -226,6 +295,9 @@
 			children = (
 				2A9B400A188BE0AC00752482 /* Goal.h */,
 				2A9B400B188BE0AC00752482 /* Goal.m */,
+				2A5A478B189FD94000AF4857 /* Note.h */,
+				2A5A478C189FD94000AF4857 /* Note.m */,
+				2A9B4007188BDBF300752482 /* GoalList.xcdatamodeld */,
 			);
 			name = CoreDataModels;
 			sourceTree = "<group>";
@@ -247,12 +319,14 @@
 				2A5A477418972B3400AF4857 /* NSDate+OSE.m */,
 				2A9B4014188BEFC100752482 /* OSEBaseViewController.h */,
 				2A9B4015188BEFC100752482 /* OSEBaseViewController.m */,
-				2A4AE644188CEE2000852B46 /* OSEPlanTableViewCell.h */,
-				2A4AE645188CEE2000852B46 /* OSEPlanTableViewCell.m */,
+				2A4AE644188CEE2000852B46 /* OSEPlanCell.h */,
+				2A4AE645188CEE2000852B46 /* OSEPlanCell.m */,
 				2A78E82018947ECD005AFF53 /* OSELogHoursCell.h */,
 				2A78E82118947ECD005AFF53 /* OSELogHoursCell.m */,
-				2A9B4028188CDF7600752482 /* OSECheckTableViewCell.h */,
-				2A9B4029188CDF7600752482 /* OSECheckTableViewCell.m */,
+				2A9B4028188CDF7600752482 /* OSECheckCell.h */,
+				2A9B4029188CDF7600752482 /* OSECheckCell.m */,
+				2A5A4791189FDE7E00AF4857 /* OSENoteCell.h */,
+				2A5A4792189FDE7E00AF4857 /* OSENoteCell.m */,
 			);
 			name = "OSE Styleguide";
 			sourceTree = "<group>";
@@ -260,20 +334,11 @@
 		2A9B4017188BF2C200752482 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2A5A4776189D47D900AF4857 /* OSECalendarViewController.h */,
-				2A5A4777189D47D900AF4857 /* OSECalendarViewController.m */,
-				2A4AE63E188CE71300852B46 /* OSEPlanViewController.h */,
-				2A4AE63F188CE71300852B46 /* OSEPlanViewController.m */,
-				2A9B3FF8188B3DE900752482 /* OSEDoViewController.h */,
-				2A9B3FF9188B3DE900752482 /* OSEDoViewController.m */,
-				2A9B3FFB188B3DFB00752482 /* OSECheckViewController.h */,
-				2A9B3FFC188B3DFB00752482 /* OSECheckViewController.m */,
-				2A9B3FFE188B3E0C00752482 /* OSEImproveViewController.h */,
-				2A9B3FFF188B3E0C00752482 /* OSEImproveViewController.m */,
-				2A9B3FF5188B3DD400752482 /* OSESaveGoalViewController.h */,
-				2A9B3FF6188B3DD400752482 /* OSESaveGoalViewController.m */,
-				2A78E82318947FB0005AFF53 /* OSELogHoursViewController.h */,
-				2A78E82418947FB0005AFF53 /* OSELogHoursViewController.m */,
+				2A5A4783189FC40E00AF4857 /* Calendar */,
+				2A5A4784189FC42400AF4857 /* Plan */,
+				2A5A4785189FC43800AF4857 /* Do */,
+				2A5A4786189FC4D000AF4857 /* Check */,
+				2A5A4787189FC4DC00AF4857 /* Notes */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -326,6 +391,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = CL;
 				TargetAttributes = {
+					2A9B3FC2188B3B9C00752482 = {
+						DevelopmentTeam = 9828K8Y63A;
+					};
 					2A9B3FDD188B3B9C00752482 = {
 						TestTargetID = 2A9B3FC2188B3B9C00752482;
 					};
@@ -374,24 +442,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A4AE646188CEE2000852B46 /* OSEPlanTableViewCell.m in Sources */,
+				2A4AE646188CEE2000852B46 /* OSEPlanCell.m in Sources */,
 				2A9B3FF7188B3DD400752482 /* OSESaveGoalViewController.m in Sources */,
-				2A9B4000188B3E0C00752482 /* OSEImproveViewController.m in Sources */,
+				2A9B4000188B3E0C00752482 /* OSENotesViewController.m in Sources */,
 				2A9B3FFA188B3DE900752482 /* OSEDoViewController.m in Sources */,
 				2A4AE640188CE71300852B46 /* OSEPlanViewController.m in Sources */,
 				2A9B3FD7188B3B9C00752482 /* OSEAppDelegate.m in Sources */,
 				2A9B400C188BE0AC00752482 /* Goal.m in Sources */,
+				2A5A4796189FE1A200AF4857 /* OSESaveNoteViewController.m in Sources */,
 				2A9B401D188BF3A700752482 /* UILabel+OSE.m in Sources */,
 				2A9B4013188BEC2800752482 /* UITextField+OSE.m in Sources */,
 				2A9B401A188BF36600752482 /* UIView+OSE.m in Sources */,
 				2A9B400F188BE5FB00752482 /* NSDateFormatter+OSE.m in Sources */,
+				2A5A4793189FDE7E00AF4857 /* OSENoteCell.m in Sources */,
 				2A9B4009188BDBF300752482 /* GoalList.xcdatamodeld in Sources */,
 				2A5A477518972B3400AF4857 /* NSDate+OSE.m in Sources */,
-				2A9B402A188CDF7600752482 /* OSECheckTableViewCell.m in Sources */,
+				2A9B402A188CDF7600752482 /* OSECheckCell.m in Sources */,
 				2A9B3FFD188B3DFB00752482 /* OSECheckViewController.m in Sources */,
+				2A5A478D189FD94000AF4857 /* Note.m in Sources */,
+				2A5A477F189DC92B00AF4857 /* OSEGoalsManager.m in Sources */,
 				2A5A477B189D4AB600AF4857 /* OSEDateManager.m in Sources */,
 				2A78E82518947FB0005AFF53 /* OSELogHoursViewController.m in Sources */,
 				2A5A4778189D47D900AF4857 /* OSECalendarViewController.m in Sources */,
+				2A5A4790189FDBE100AF4857 /* OSENotesManager.m in Sources */,
 				2A9B4020188BF66800752482 /* UIButton+OSE.m in Sources */,
 				2A9B3FD3188B3B9C00752482 /* main.m in Sources */,
 				2A78E82218947ECD005AFF53 /* OSELogHoursCell.m in Sources */,
@@ -516,10 +589,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OneSixEight/OneSixEight-Prefix.pch";
 				INFOPLIST_FILE = "OneSixEight/OneSixEight-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -529,10 +605,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OneSixEight/OneSixEight-Prefix.pch";
 				INFOPLIST_FILE = "OneSixEight/OneSixEight-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

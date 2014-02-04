@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OSECheckTableViewCell : UITableViewCell
+@interface OSECheckCell : UITableViewCell
 
 @property UILabel *hoursInfoLabel;
 

@@ -18,7 +18,9 @@
     
     NSLocale *locale = [NSLocale currentLocale];
     [dateFormatter setLocale:locale];
-    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+
     return dateFormatter;
 }
+
 @end

@@ -27,13 +27,13 @@
 + (UIButton *)standardRedButton
 {
     UIButton *oseButton = [[UIButton alloc] init];
-    [oseButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [oseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [oseButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [oseButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     
     [oseButton.layer setBorderColor:[[UIColor redColor] CGColor]];
     [oseButton.layer setBorderWidth:1];
-    oseButton.backgroundColor = [UIColor clearColor];
+    oseButton.backgroundColor = [UIColor redColor];
     oseButton.frame = CGRectMake(0, 0, 280, 40);
     return oseButton;
 }

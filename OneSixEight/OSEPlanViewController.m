@@ -8,7 +8,7 @@
 
 #import "OSEPlanViewController.h"
 #import "OSESaveGoalViewController.h"
-#import "OSEPlanTableViewCell.h"
+#import "OSEPlanCell.h"
 
 @interface OSEPlanViewController ()
 
@@ -37,9 +37,8 @@
     self.view.backgroundColor = [UIColor orangeColor];
     
 	// Do any additional setup after loading the view.
-    float height = [UIScreen mainScreen].bounds.size.height-20;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,[UIScreen mainScreen].bounds.size.width,height) style:UITableViewStylePlain];
-    [self.tableView registerClass:[OSEPlanTableViewCell class] forCellReuseIdentifier:@"planGoalCellIdentifier"];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height) style:UITableViewStylePlain];
+    [self.tableView registerClass:[OSEPlanCell class] forCellReuseIdentifier:@"planGoalCellIdentifier"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
@@ -57,8 +56,7 @@
 {
     [super viewWillAppear:animated];
     
-    OSEAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-    self.fetchedGoals = [appDelegate fetchGoalsFromWeekStarting:self.dateManager.date];
+    self.fetchedGoals = [self.goalsManager fetchGoalsFromWeekStarting:self.dateManager.date];
     
     [self _updateTotals];
     [self.tableView reloadData];
@@ -73,7 +71,8 @@
 #pragma mark - responders
 - (void)createNewGoal:(id)target
 {
-    OSESaveGoalViewController *goalController = [[OSESaveGoalViewController alloc] initWithDate:self.dateManager.date];
+    OSESaveGoalViewController *goalController = [[OSESaveGoalViewController alloc] initWithDateManager:self.dateManager
+                                                                                          goalsManager:self.goalsManager];
     [self presentViewController:goalController animated:YES completion:nil];
 }
 
@@ -91,18 +90,17 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"planGoalCellIdentifier";
-    OSEPlanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    OSEPlanCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     if(!cell){
-        cell = [[OSEPlanTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[OSEPlanCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     Goal *goal = [self.fetchedGoals objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", goal.name];
     
     float targetHours = [goal.targetHours floatValue];
-    NSString *string = [NSString stringWithFormat:@"%0.0f", targetHours];
-    cell.hoursInfoLabel.text = string;
+    cell.hoursInfoLabel.text = [NSString stringWithFormat:@"%0.0f", targetHours];
     
     return cell;
 }
@@ -111,7 +109,9 @@
 {
     Goal *goal = [self.fetchedGoals objectAtIndex:indexPath.row];
     
-    OSESaveGoalViewController *goalController = [[OSESaveGoalViewController alloc] initWithGoal:goal];
+    OSESaveGoalViewController *goalController = [[OSESaveGoalViewController alloc] initWithDateManager:self.dateManager
+                                                                                          goalsManager:self.goalsManager];
+    goalController.goal = goal;
     [self presentViewController:goalController animated:YES completion:nil];
 }
 
@@ -162,17 +162,13 @@
 - (void)_updateTotals
 {
     NSNumber *sum = [self.fetchedGoals valueForKeyPath:@"@sum.targetHours"];
-    NSString *totalHours = [NSString stringWithFormat:@"%d%% Planned", [sum intValue]*100/168];
+    NSString *totalHours = [NSString stringWithFormat:@"Planned (%d%%)", [sum intValue]*100/168];
     self.navigationItem.title = totalHours;
 }
 
 - (void)_removeGoalAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.managedObjectContext deleteObject:self.fetchedGoals[indexPath.row]];
-    NSError *error;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
+    [self.goalsManager removeGoal:self.fetchedGoals[indexPath.row]];
     [self.fetchedGoals removeObjectAtIndex:indexPath.row];
 }
 

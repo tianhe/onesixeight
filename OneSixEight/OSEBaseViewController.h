@@ -16,14 +16,14 @@
 #import "UIButton+OSE.h"
 #import "NSDate+OSE.h"
 #import "OSEDateManager.h"
+#import "OSEGoalsManager.h"
 
 @interface OSEBaseViewController : UIViewController
 
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property NSDateFormatter *dateFormatter;
 @property NSMutableArray *fetchedGoals;
-@property OSEAppDelegate *appDelegate;
 @property OSEDateManager *dateManager;
+@property OSEGoalsManager *goalsManager;
 
-- (id) initWithDateManager:(OSEDateManager *)dateManager;
+- (id) initWithDateManager:(OSEDateManager *)dateManager goalsManager:(OSEGoalsManager *)goalsManager;
 @end

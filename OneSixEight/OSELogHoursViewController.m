@@ -103,7 +103,7 @@
     self.goal.loggedHours = [NSDecimalNumber decimalNumberWithString:self.loggedHoursLabel.text];
 
     NSError *error;
-    if (![self.managedObjectContext save:&error]) {
+    if (![self.goal.managedObjectContext save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     

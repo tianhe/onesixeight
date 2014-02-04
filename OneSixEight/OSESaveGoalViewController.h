@@ -8,7 +8,7 @@
 
 #import "OSEBaseViewController.h"
 
-@interface OSESaveGoalViewController : OSEBaseViewController
+@interface OSESaveGoalViewController : OSEBaseViewController <UITextFieldDelegate>
 
 - (id)initWithGoal:(Goal *)goal;
 - (id)initWithDate:(NSDate *)date;

@@ -9,6 +9,7 @@
 #import "UITextField+OSE.h"
 
 @implementation UITextField (OSE)
+
 + (UITextField *)standardTextField
 {
     UITextField *oseTextField = [[UITextField alloc] init];

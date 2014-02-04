@@ -10,9 +10,10 @@
 #import "OSEPlanViewController.h"
 #import "OSECheckViewController.h"
 #import "OSEDoViewController.h"
-#import "OSEImproveViewController.h"
+#import "OSENotesViewController.h"
 #import "OSECalendarViewController.h"
 #import "OSEDateManager.h"
+#import "OSEGoalsManager.h"
 
 @implementation OSEAppDelegate
 
@@ -25,17 +26,22 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     OSEDateManager *dateManager = [[OSEDateManager alloc] initWithDate:[NSDate thisSunday]];
+    OSEGoalsManager *goalManager = [[OSEGoalsManager alloc] initWithManagedObjectContext:self.managedObjectContext];
+    OSENotesManager *notesManager = [[OSENotesManager alloc] initWithManagedObjectContext:self.managedObjectContext];
     
-    UIViewController *viewController0 = [[OSECalendarViewController alloc] initWithDateManager:dateManager];
-    UIViewController *viewController1 = [[OSEPlanViewController alloc] initWithDateManager:dateManager];
-    UIViewController *viewController2 = [[OSEDoViewController alloc] initWithDateManager:dateManager];
-    UIViewController *viewController3 = [[OSECheckViewController alloc] initWithDateManager:dateManager];
-    UIViewController *viewController4 = [[OSEImproveViewController alloc] initWithDateManager:dateManager];
+    UIViewController *viewController0 = [[OSECalendarViewController alloc] initWithDateManager:dateManager goalsManager:goalManager];
+    UIViewController *viewController1 = [[OSEPlanViewController alloc] initWithDateManager:dateManager goalsManager:goalManager];
+    UIViewController *viewController2 = [[OSEDoViewController alloc] initWithDateManager:dateManager goalsManager:goalManager];
+    UIViewController *viewController3 = [[OSECheckViewController alloc] initWithDateManager:dateManager goalsManager:goalManager];
+    UIViewController *viewController4 = [[OSENotesViewController alloc] initWithDateManager:dateManager notesManager:notesManager];
+    
     UINavigationController *navController1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
     UINavigationController *navController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
+    UINavigationController *navController3 = [[UINavigationController alloc] initWithRootViewController:viewController3];
+    UINavigationController *navController4 = [[UINavigationController alloc] initWithRootViewController:viewController4];
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController0, navController1, navController2, viewController3, viewController4, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController0, navController1, navController2, navController3, navController4, nil];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
@@ -91,13 +97,15 @@
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     if (_persistentStoreCoordinator == nil) {
-        NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
-                                                   stringByAppendingPathComponent: @"Goals.sqlite"]];
         NSError *error = nil;
-        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
-                                       initWithManagedObjectModel:[self managedObjectModel]];
+
+        NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Goals.sqlite"]];
+        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+        
+        NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption:[NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption:[NSNumber numberWithBool:YES]};
+        
         if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
-                                                      configuration:nil URL:storeUrl options:nil error:&error]) {
+                                                      configuration:nil URL:storeUrl options:options error:&error]) {
             /*Error for store creation should be handled in here*/
         }
     }
@@ -107,35 +115,5 @@
 - (NSString *)applicationDocumentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
-
-- (NSMutableArray *)getAllGoals {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Goal" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    NSError *error;
-    
-    NSArray *fetchedGoals = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    return [NSMutableArray arrayWithArray:fetchedGoals];
-}
-
-- (NSMutableArray *)fetchGoalsFromWeekStarting:(NSDate *)date
-{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Goal" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"startDate == %@", date];
-    [fetchRequest setPredicate:predicate];
-    
-    NSError *error;
-    NSArray *fetchedGoals = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    return [NSMutableArray arrayWithArray:fetchedGoals];
-}
-
-- (void)removeGoal:(Goal *)goal {
-    [self.managedObjectContext deleteObject:goal];
-//    [self.managedObjectContext save];
-}
-
 
 @end

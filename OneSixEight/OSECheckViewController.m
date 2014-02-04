@@ -7,9 +7,11 @@
 //
 
 #import "OSECheckViewController.h"
-#import "OSECheckTableViewCell.h"
+#import "OSECheckCell.h"
 
 @interface OSECheckViewController ()
+
+@property NSArray *startDates;
 
 @end
 
@@ -30,23 +32,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    OSEAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-    self.fetchedGoals = [appDelegate fetchGoalsFromWeekStarting:self.dateManager.date];
-    
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame];
-    [self.tableView setOriginAtX:0 andY:40];
-    [self.tableView registerClass:[OSECheckTableViewCell class] forCellReuseIdentifier:@"checkGoalCellIdentifier"];
+    [self.tableView setOriginAtX:0 andY:0];
+    [self.tableView registerClass:[OSECheckCell class] forCellReuseIdentifier:@"checkGoalCellIdentifier"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-
-    [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.startDates = [[self.goalsManager fetchAllStartDates] valueForKey:@"startDate"];
     [self.tableView reloadData];
+    self.navigationItem.title = [NSString stringWithFormat:@"%d Weeks", self.startDates.count];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,7 +58,7 @@
 #pragma mark - table methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.fetchedGoals count];
+    return [self.startDates count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -69,18 +69,24 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"checkGoalCellIdentifier";
-    OSECheckTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    OSECheckCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     if(!cell){
-        cell = [[OSECheckTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[OSECheckCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    Goal *goal = [self.fetchedGoals objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", goal.name];
+    NSString *week = self.startDates[indexPath.row];
     
-    float loggedHours = [goal.loggedHours floatValue];
-    float targetHours = [goal.targetHours floatValue];
-    NSString *string = [NSString stringWithFormat:@"%0.0f/%0.0f (%0.0f%%)", loggedHours, targetHours, loggedHours/targetHours*100 ];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", week];
+
+    NSDateFormatter *dateFormatter = [NSDateFormatter standardDateFormat];
+    NSDate *startDate = [dateFormatter dateFromString:week];
+    NSArray *goals = [self.goalsManager fetchGoalsFromWeekStarting:startDate];
+    
+    float loggedHours = [[goals valueForKeyPath:@"@sum.loggedHours"] floatValue];
+    float targetHours = [[goals valueForKeyPath:@"@sum.targetHours"] floatValue];
+    
+    NSString *string = [NSString stringWithFormat:@"%0.0f (%0.0f%%)", loggedHours, loggedHours/targetHours*100 ];
     
     cell.hoursInfoLabel.text = string;
 
