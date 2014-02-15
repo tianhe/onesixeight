@@ -59,11 +59,35 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    UIApplication *app = [UIApplication sharedApplication];
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    
+    if (notification) {
+        NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        cal.timeZone = [NSTimeZone defaultTimeZone];
+        NSDateComponents *component = [cal components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
+        component.hour = 17;
+        NSDate *fireDate = [cal dateFromComponents:component];
+        
+        if([fireDate compare:[NSDate date]] == NSOrderedAscending){
+            fireDate = [fireDate dateByAddingTimeInterval:24*60*60];
+        }
+        
+        notification.fireDate = fireDate;
+        notification.timeZone = [NSTimeZone defaultTimeZone];
+        notification.repeatInterval = NSDayCalendarUnit;
+        notification.alertBody = @"Need to update your accomplishments?";
+        notification.alertAction = @"OK";
+        notification.applicationIconBadgeNumber = 1;
+        [app scheduleLocalNotification:notification];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    UIApplication *app = [UIApplication sharedApplication];
+    [app cancelAllLocalNotifications];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

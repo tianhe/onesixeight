@@ -83,13 +83,16 @@
     NSDate *startDate = [dateFormatter dateFromString:week];
     NSArray *goals = [self.goalsManager fetchGoalsFromWeekStarting:startDate];
     
-    float loggedHours = [[goals valueForKeyPath:@"@sum.loggedHours"] floatValue];
-    float targetHours = [[goals valueForKeyPath:@"@sum.targetHours"] floatValue];
-    
-    NSString *string = [NSString stringWithFormat:@"%0.0f (%0.0f%%)", loggedHours, loggedHours/targetHours*100 ];
-    
+    NSNumber *loggedHours = [goals valueForKeyPath:@"@sum.loggedHours"];
+    NSNumber *targetHours = [goals valueForKeyPath:@"@sum.targetHours"];    
+    NSString *string;
+    if([targetHours isEqualToNumber:@0]){
+        string = @"0 (0%)";
+    } else {
+        string = [NSString stringWithFormat:@"%0.0f (%0.0f%%)", [loggedHours floatValue], [loggedHours floatValue]/[targetHours floatValue]*100];
+    }
     cell.hoursInfoLabel.text = string;
-
+    
     return cell;
 }
 

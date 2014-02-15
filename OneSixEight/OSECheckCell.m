@@ -14,8 +14,9 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.hoursInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(250, 0, 158, 40)];
+        self.hoursInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, 158, 40)];
         self.hoursInfoLabel.textColor = [UIColor orangeColor];
+        self.hoursInfoLabel.textAlignment = NSTextAlignmentRight;
         [self addSubview:self.hoursInfoLabel];
     }
     return self;

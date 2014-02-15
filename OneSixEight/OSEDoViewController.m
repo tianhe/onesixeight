@@ -109,8 +109,13 @@
 - (void)_updateCompletion
 {
     NSNumber *sum = [self.fetchedGoals valueForKeyPath:@"@sum.loggedHours"];
-    NSString *totalHours = [NSString stringWithFormat:@"Completed (%d%%)", [sum intValue]*100/168];
-    self.navigationItem.title = totalHours;
+    NSNumber *targetSum = [self.fetchedGoals valueForKeyPath:@"@sum.targetHours"];
+
+    if([targetSum isEqualToNumber:@0]){
+        self.navigationItem.title = @"0";
+    } else {
+        self.navigationItem.title = [NSString stringWithFormat:@"Completed (%0.f%%)", [sum floatValue]*100/[targetSum floatValue]];
+    }
 }
 
 @end
